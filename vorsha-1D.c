@@ -2,7 +2,7 @@
 #include <time.h>
 #include <math.h>
 #include "murmur.h"
-//#include "rotate.h"
+#include "constants.h"
 #include "hexa.h"
 #include "prime.h"
 
@@ -21,6 +21,8 @@ void genHash(char *key, unsigned int seed, int bit_size, char *hash_value)
 	int pos,bit;
 	char *hash_bits=(char *)malloc(bit_size*sizeof(char)+1);
 	for(l=0;key[l]!='\0';l++);
+	seed=getSeedValue(key,l,seed);
+	seed=tab[seed%2293];
 	seed=getSeedValue(key,l,seed);
 	seed=seed+bit_size;	
 	
