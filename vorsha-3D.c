@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "murmur.h"
+#include "constants.h"
 #include "hexa.h"
 #include "prime.h"
 
@@ -41,6 +42,8 @@ void genHash(char *key, unsigned int seed, int bit_size, char *hash_value)
 	for(l=0;key[l]!='\0';l++);
 	
 	seed=(unsigned int)getSeedValue(key,l,seed);
+	seed=tab[seed%2293];
+	seed=getSeedValue(key,l,seed);
 	r=getDim(seed);
 	while(1)
 	{
